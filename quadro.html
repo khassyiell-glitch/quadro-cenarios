@@ -35,6 +35,14 @@ label.c{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:12px}
 .it.erro img{display:none}
 #toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2f35;border:1px solid var(--ln);padding:8px 14px;border-radius:8px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:80vw}
 #toast.on{opacity:1}
+#ferbar{display:flex;align-items:center;gap:8px;padding:6px 12px;border-bottom:1px solid var(--ln);background:var(--pn);flex-wrap:wrap}
+#ferbar[hidden]{display:none}
+select{background:#15161a;border:1px solid var(--ln);color:var(--tx);border-radius:6px;padding:4px 6px;font:inherit}
+#dcor{width:30px;height:26px;padding:0;border:1px solid var(--ln);border-radius:4px;background:none}
+#des{position:absolute;left:0;top:0;pointer-events:none;z-index:99999;overflow:visible}
+#board[data-f]:not([data-f=mover]){cursor:crosshair}
+#board[data-f=borracha]{cursor:cell}
+#tx{position:absolute;z-index:100000;min-width:140px;background:rgba(255,255,255,.85);border:1px dashed #666;color:#000;font:600 inherit "Segoe UI",system-ui,sans-serif;padding:0 4px;outline:none}
 </style></head>
 <body>
 <header id="bar">
@@ -50,7 +58,16 @@ label.c{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:12px}
   </div>
   <button id="fechar">Fechar</button>
 </header>
-<div id="stage"><div id="wrap"><div id="board"></div></div></div>
+<div id="ferbar" hidden>
+  <span class="grp" id="ferr"><button data-f="mover" class="on">Mover</button><button data-f="lapis">Lápis</button><button data-f="linha">Linha</button><button data-f="seta">Seta</button><button data-f="ret">Retângulo</button><button data-f="elip">Círculo</button><button data-f="txt">Texto</button><button data-f="borracha">Borracha</button></span>
+  <span class="sep"></span>
+  <label class="c">Cor <input type="color" id="dcor" value="#e11d48"></label>
+  <label class="c">Espessura <select id="desp"><option value="3">Fina</option><option value="6" selected>Média</option><option value="12">Grossa</option></select></label>
+  <label class="c"><input type="checkbox" id="dfil"> Preencher</label>
+  <span class="sep"></span>
+  <button id="desf">Desfazer</button><button id="dlim">Limpar desenhos</button>
+</div>
+<div id="stage"><div id="wrap"><div id="board"><svg id="des" viewBox="0 0 1600 1000" width="1600" height="1000" xmlns="http://www.w3.org/2000/svg"></svg></div></div></div>
 <div id="toast"></div>
-<script src="quadro.js?v=4"></script>
+<script src="quadro.js?v=5"></script>
 </body></html>
