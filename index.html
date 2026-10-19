@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quadro de cenários</title>
+<style>
+:root{--bg:#17181a;--ln:#3a3d44;--tx:#e8e9ec;--mu:#9a9fa9;--ac:#6aa9ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.4 "Segoe UI",system-ui,sans-serif;height:100vh}
+header{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--ln)}
+h1{font-size:15px;margin:0;flex:1;font-weight:600}
+button{font:inherit;background:#2c2f35;border:1px solid var(--ln);color:var(--tx);border-radius:8px;padding:9px 12px;cursor:pointer;width:100%}
+header button{width:auto;padding:4px 10px}
+button:hover:not(:disabled){border-color:var(--ac)}button:disabled{opacity:.4;cursor:default}
+button.on{border-color:var(--ac);color:var(--ac)}
+button:focus-visible{outline:2px solid var(--ac);outline-offset:1px}
+main{padding:14px;display:grid;gap:10px}
+#stat{font-size:12px;color:var(--mu);margin:0}
+[hidden]{display:none!important}
+</style></head>
+<body>
+<header><h1>Quadro de cenários</h1><button id="close">Fechar</button></header>
+<main>
+  <button id="abrir">Abrir o quadro</button>
+  <button id="vis" hidden>Mostrar aos jogadores</button>
+  <p id="stat"></p>
+</main>
+<script src="app.js?v=1"></script>
+</body></html>

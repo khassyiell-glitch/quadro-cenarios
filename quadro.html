@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quadro de cenários</title>
+<style>
+:root{--bg:#17181a;--pn:#222428;--ln:#3a3d44;--tx:#e8e9ec;--mu:#9a9fa9;--ac:#6aa9ff}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.4 "Segoe UI",system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+#bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--ln);background:var(--pn);flex-wrap:wrap}
+#gmbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex:1}
+#gmbar[hidden]{display:none}
+button,input{font:inherit}
+button{background:#2c2f35;border:1px solid var(--ln);color:var(--tx);border-radius:6px;padding:5px 10px;cursor:pointer;white-space:nowrap}
+button:hover:not(:disabled){border-color:var(--ac)}
+button:disabled{opacity:.4;cursor:default}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:1px}
+button.on{border-color:var(--ac);color:var(--ac)}
+#url{width:230px;background:#15161a;border:1px solid var(--ln);color:var(--tx);border-radius:6px;padding:5px 8px}
+.grp{display:flex;gap:4px;align-items:center}
+.sep{width:1px;height:22px;background:var(--ln);margin:0 4px}
+label.c{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:12px}
+#cor{width:30px;height:26px;padding:0;border:1px solid var(--ln);border-radius:4px;background:none}
+#stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:12px}
+#wrap{position:relative;flex:none;box-shadow:0 6px 30px rgba(0,0,0,.5)}
+#board{position:absolute;left:0;top:0;width:1600px;height:1000px;transform-origin:0 0;background:#fff;overflow:hidden;touch-action:none}
+.it{position:absolute;user-select:none}
+.it img{width:100%;height:100%;display:block;pointer-events:none;object-fit:fill}
+.gm .it{cursor:move}
+.it.sel{outline:3px solid var(--ac);outline-offset:0}
+.it .h{display:none;position:absolute;right:-9px;bottom:-9px;width:18px;height:18px;background:var(--ac);border:2px solid #fff;border-radius:4px;cursor:nwse-resize}
+.gm .it.sel .h{display:block}
+.it.erro{border:2px dashed #999;background:#eee}
+.it.erro::after{content:"imagem indisponível";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#666;font-size:22px;text-align:center}
+.it.erro img{display:none}
+#vazio{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#b5b8be;font-size:30px;text-align:center;padding:40px;pointer-events:none}
+#toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2f35;border:1px solid var(--ln);padding:8px 14px;border-radius:8px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:80vw}
+#toast.on{opacity:1}
+</style></head>
+<body>
+<header id="bar">
+  <div id="gmbar" hidden>
+    <input id="url" placeholder="Colar o link de uma imagem" aria-label="Link da imagem"><button id="addurl">Adicionar link</button>
+    <button id="pc">Do computador</button><input type="file" id="file" accept="image/*" multiple hidden>
+    <button id="lib">Da biblioteca</button>
+    <span class="sep"></span>
+    <span class="grp"><button class="ord" data-o="fundo" title="Enviar para o fundo">⤒ Fundo</button><button class="ord" data-o="voltar" title="Enviar para trás">Trás</button><button class="ord" data-o="avancar" title="Trazer para frente">Frente</button><button class="ord" data-o="frente" title="Trazer para o topo">Topo ⤓</button><button id="rem">Remover</button></span>
+    <span class="sep"></span>
+    <label class="c">Fundo <input type="color" id="cor" value="#ffffff"></label>
+    <button id="vis">Mostrar aos jogadores</button>
+  </div>
+  <button id="fechar">Fechar</button>
+</header>
+<div id="stage"><div id="wrap"><div id="board"><div id="vazio" hidden>Quadro em branco. Adicione imagens por link, do computador ou da biblioteca.</div></div></div></div>
+<div id="toast"></div>
+<script src="quadro.js?v=1"></script>
+</body></html>
