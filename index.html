@@ -14,15 +14,16 @@ button:hover:not(:disabled){border-color:var(--ac)}button:disabled{opacity:.4;cu
 button.on{border-color:var(--ac);color:var(--ac)}
 button:focus-visible{outline:2px solid var(--ac);outline-offset:1px}
 main{padding:14px;display:grid;gap:10px}
+.duo{display:flex;gap:8px}.duo button:first-child{flex:1}.duo button:last-child{width:auto;white-space:nowrap}
 #stat{font-size:12px;color:var(--mu);margin:0}
 [hidden]{display:none!important}
 </style></head>
 <body>
 <header><h1>Quadro de cenários</h1><button id="close">Fechar</button></header>
 <main>
-  <button id="abrir">Abrir o quadro</button>
+  <div class="duo"><button id="abrir">Abrir o quadro</button><button id="cheia" title="Abrir ocupando a tela toda">Tela cheia</button></div>
   <button id="vis" hidden>Mostrar aos jogadores</button>
   <p id="stat"></p>
 </main>
-<script src="app.js?v=1"></script>
+<script src="app.js?v=2"></script>
 </body></html>

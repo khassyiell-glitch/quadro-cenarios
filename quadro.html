@@ -21,9 +21,9 @@ button.on{border-color:var(--ac);color:var(--ac)}
 .sep{width:1px;height:22px;background:var(--ln);margin:0 4px}
 label.c{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:12px}
 #cor{width:30px;height:26px;padding:0;border:1px solid var(--ln);border-radius:4px;background:none}
-#stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:12px}
-#wrap{position:relative;flex:none;box-shadow:0 6px 30px rgba(0,0,0,.5)}
-#board{position:absolute;left:0;top:0;width:1600px;height:1000px;transform-origin:0 0;background:#fff;overflow:hidden;touch-action:none}
+#stage{flex:1;overflow:auto;min-height:0;padding:12px;scrollbar-color:#555 #222}
+#wrap{position:relative;margin:0 auto;box-shadow:0 6px 30px rgba(0,0,0,.5)}
+#board{position:absolute;left:0;top:0;transform-origin:0 0;background:#fff;overflow:hidden;touch-action:none}
 .it{position:absolute;left:0;top:0;user-select:none;will-change:transform}
 .it img{width:100%;height:100%;display:block;pointer-events:none;object-fit:fill}
 .gm .it{cursor:move}
@@ -39,6 +39,7 @@ label.c{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:12px}
 #ferbar[hidden]{display:none}
 select{background:#15161a;border:1px solid var(--ln);color:var(--tx);border-radius:6px;padding:4px 6px;font:inherit}
 #dcor{width:30px;height:26px;padding:0;border:1px solid var(--ln);border-radius:4px;background:none}
+#bw,#bh{width:78px;background:#15161a;border:1px solid var(--ln);color:var(--tx);border-radius:6px;padding:4px 6px}
 #des{position:absolute;left:0;top:0;pointer-events:none;z-index:99999;overflow:visible}
 #board[data-f]:not([data-f=mover]){cursor:crosshair}
 #board[data-f=borracha]{cursor:cell}
@@ -56,7 +57,7 @@ select{background:#15161a;border:1px solid var(--ln);color:var(--tx);border-radi
     <label class="c">Fundo <input type="color" id="cor" value="#ffffff"></label>
     <button id="vis">Mostrar aos jogadores</button>
   </div>
-  <button id="fechar">Fechar</button>
+  <label class="c">Zoom <select id="zoom"><option value="ajustar">Ajustar à largura</option><option value="0.5">50%</option><option value="0.75">75%</option><option value="1">100%</option><option value="1.5">150%</option></select></label><button id="fechar">Fechar</button>
 </header>
 <div id="ferbar" hidden>
   <span class="grp" id="ferr"><button data-f="mover" class="on">Mover</button><button data-f="lapis">Lápis</button><button data-f="linha">Linha</button><button data-f="seta">Seta</button><button data-f="ret">Retângulo</button><button data-f="elip">Círculo</button><button data-f="txt">Texto</button><button data-f="borracha">Borracha</button></span>
@@ -65,9 +66,13 @@ select{background:#15161a;border:1px solid var(--ln);color:var(--tx);border-radi
   <label class="c">Espessura <select id="desp"><option value="3">Fina</option><option value="6" selected>Média</option><option value="12">Grossa</option></select></label>
   <label class="c"><input type="checkbox" id="dfil"> Preencher</label>
   <span class="sep"></span>
+  <label class="c">Largura <input type="number" id="bw" min="800" max="8000" step="100"></label>
+  <label class="c">Altura <input type="number" id="bh" min="600" max="20000" step="100"></label>
+  <button id="maisalt" title="Aumenta o quadro para baixo">+ Espaço abaixo</button>
+  <span class="sep"></span>
   <button id="desf">Desfazer</button><button id="dlim">Limpar desenhos</button>
 </div>
 <div id="stage"><div id="wrap"><div id="board"><svg id="des" viewBox="0 0 1600 1000" width="1600" height="1000" xmlns="http://www.w3.org/2000/svg"></svg></div></div></div>
 <div id="toast"></div>
-<script src="quadro.js?v=5"></script>
+<script src="quadro.js?v=6"></script>
 </body></html>
