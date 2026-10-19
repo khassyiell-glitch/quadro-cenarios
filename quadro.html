@@ -24,7 +24,7 @@ label.c{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:12px}
 #stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:12px}
 #wrap{position:relative;flex:none;box-shadow:0 6px 30px rgba(0,0,0,.5)}
 #board{position:absolute;left:0;top:0;width:1600px;height:1000px;transform-origin:0 0;background:#fff;overflow:hidden;touch-action:none}
-.it{position:absolute;user-select:none}
+.it{position:absolute;left:0;top:0;user-select:none;will-change:transform}
 .it img{width:100%;height:100%;display:block;pointer-events:none;object-fit:fill}
 .gm .it{cursor:move}
 .it.sel{outline:3px solid var(--ac);outline-offset:0}
@@ -33,7 +33,6 @@ label.c{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:12px}
 .it.erro{border:2px dashed #999;background:#eee}
 .it.erro::after{content:"imagem indisponível";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#666;font-size:22px;text-align:center}
 .it.erro img{display:none}
-#vazio{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#b5b8be;font-size:30px;text-align:center;padding:40px;pointer-events:none}
 #toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2f35;border:1px solid var(--ln);padding:8px 14px;border-radius:8px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:80vw}
 #toast.on{opacity:1}
 </style></head>
@@ -51,7 +50,7 @@ label.c{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:12px}
   </div>
   <button id="fechar">Fechar</button>
 </header>
-<div id="stage"><div id="wrap"><div id="board"><div id="vazio" hidden>Quadro em branco. Adicione imagens por link, do computador ou da biblioteca.</div></div></div></div>
+<div id="stage"><div id="wrap"><div id="board"></div></div></div>
 <div id="toast"></div>
-<script src="quadro.js?v=1"></script>
+<script src="quadro.js?v=4"></script>
 </body></html>
